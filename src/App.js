@@ -6,8 +6,15 @@ import BottomRow from "./BottomRow";
 
 function App() {
   //TODO: STEP 2 - Establish your applictaion's state with some useState hooks.  You'll need one for the home score and another for the away score.
+  // Scores
   const [homeScore, setHomeScore] = useState(0);
   const [awayScore, setAwayScore] = useState(0);
+
+  // Downs
+  const [downs, setDowns] = useState(1);
+
+  // Quarter
+  const [quarter, setQuarter] = useState(1);
 
   // Stretch goal function to take team name with score and apply to scoreboard after receiving input
   const handleScoreEvent = () => {
@@ -30,6 +37,10 @@ function App() {
         );
         handleScoreEvent();
     }
+  };
+
+  const handleQuarters = num => {
+    num >= 4 ? setQuarter(1) : setQuarter(num + 1);
   };
 
   return (
@@ -83,6 +94,10 @@ function App() {
             className="awayButtons__fieldGoal"
           >
             Away Field Goal
+          </button>
+
+          <button onClick={() => handleQuarters(quarter)}>
+            End of Quarter
           </button>
         </div>
       </section>
