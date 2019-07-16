@@ -9,27 +9,23 @@ function App() {
   // Scores
   const [homeScore, setHomeScore] = useState(0);
   const [awayScore, setAwayScore] = useState(0);
-
-  // Downs
-  const [downs, setDowns] = useState(1);
-
   // Quarter
   const [quarter, setQuarter] = useState(1);
 
   // Stretch goal function to take team name with score and apply to scoreboard after receiving input
   const handleScoreEvent = () => {
     // Get scoring team from user
-    let team = prompt("Scoring team: ").trim();
+    let team = prompt("Scoring team: ", "Home / Away").trim();
 
     // Set correct score or reprompt for scoring team
     switch (team.toLowerCase()) {
       case "lions":
       case "home":
-        setHomeScore(homeScore + parseInt(prompt("Points scored: ")));
+        setHomeScore(homeScore + parseInt(prompt("Points scored: ", 0)));
         break;
       case "tigers":
       case "away":
-        setAwayScore(awayScore + parseInt(prompt("Points scored: ")));
+        setAwayScore(awayScore + parseInt(prompt("Points scored: ", 0)));
         break;
       default:
         alert(
@@ -60,7 +56,7 @@ function App() {
             <div className="away__score">{awayScore}</div>
           </div>
         </div>
-        <BottomRow />
+        <BottomRow quarter={quarter} />
       </section>
       <section className="buttons">
         <div className="homeButtons">
