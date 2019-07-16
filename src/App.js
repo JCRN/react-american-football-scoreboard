@@ -15,7 +15,7 @@ function App() {
   // Stretch goal function to take team name with score and apply to scoreboard after receiving input
   const handleScoreEvent = () => {
     // Get scoring team from user
-    let team = prompt("Scoring team: ", "Home / Away").trim();
+    let team = prompt("Scoring team: ").trim();
 
     // Set correct score or reprompt for scoring team
     switch (team.toLowerCase()) {
@@ -35,8 +35,8 @@ function App() {
     }
   };
 
-  const handleQuarters = num => {
-    num >= 4 ? setQuarter(1) : setQuarter(num + 1);
+  const handleQuarters = quarter => {
+    quarter >= 4 ? setQuarter(1) : setQuarter(quarter + 1);
   };
 
   return (
